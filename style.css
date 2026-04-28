@@ -1,0 +1,309 @@
+:root {
+    --bg: #050505;
+    --panel: rgba(18, 18, 20, 0.8);
+    --panel-strong: rgba(14, 14, 16, 0.94);
+    --line: rgba(255, 255, 255, 0.08);
+    --text: #f5f7fb;
+    --muted: #a9afbb;
+    --gold: #f3b24d;
+    --gold-strong: #ff9f1c;
+    --success: #4ade80;
+    --error: #ff8b8b;
+    --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 15% 15%, rgba(255, 159, 28, 0.16), transparent 20%),
+        radial-gradient(circle at 85% 10%, rgba(56, 189, 248, 0.18), transparent 24%),
+        linear-gradient(180deg, #070708 0%, #030303 100%);
+    overflow-x: hidden;
+    position: relative;
+}
+
+.page-glow {
+    position: fixed;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    opacity: 0.45;
+    z-index: 0;
+}
+
+.page-glow-left {
+    top: -120px;
+    left: -100px;
+    background: rgba(255, 159, 28, 0.3);
+}
+
+.page-glow-right {
+    top: 180px;
+    right: -140px;
+    background: rgba(56, 189, 248, 0.2);
+}
+
+.hero {
+    min-height: 72vh;
+    display: grid;
+    place-items: center;
+    padding: 56px 20px 28px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-card,
+.contact-card {
+    width: min(100%, 860px);
+    background: linear-gradient(180deg, rgba(23, 23, 27, 0.9) 0%, rgba(11, 11, 13, 0.88) 100%);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(16px);
+}
+
+.hero-card {
+    padding: 56px 44px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 32%, transparent 72%, rgba(243, 178, 77, 0.12));
+    pointer-events: none;
+}
+
+.eyebrow {
+    margin: 0 0 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.8rem;
+    color: var(--gold);
+    font-weight: 700;
+}
+
+h1,
+h2 {
+    margin: 0;
+    color: var(--text);
+}
+
+h1 {
+    font-size: clamp(2.4rem, 6vw, 4.8rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    text-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.hero-copy,
+.contact-copy p,
+.form-note,
+.form-status {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.hero-copy {
+    max-width: 620px;
+    margin: 18px auto 0;
+    font-size: 1.05rem;
+}
+
+.hero-pills {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.hero-pills span,
+.highlight-card {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+}
+
+.hero-pills span {
+    padding: 10px 16px;
+    border-radius: 999px;
+    color: #e8ebf2;
+    font-size: 0.95rem;
+}
+
+.contact-footer {
+    padding: 0 20px 44px;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-card {
+    margin: 0 auto;
+    padding: 34px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.contact-copy {
+    align-self: center;
+}
+
+.contact-copy h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.contact-highlights {
+    display: grid;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.highlight-card {
+    border-radius: 18px;
+    padding: 16px 18px;
+}
+
+.highlight-card strong,
+.highlight-card span {
+    display: block;
+}
+
+.highlight-card strong {
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.highlight-card span {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.contact-form {
+    display: grid;
+    gap: 12px;
+}
+
+.contact-form label {
+    font-weight: 700;
+    color: #dde3ee;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 14px 16px;
+    font: inherit;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #808797;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: rgba(243, 178, 77, 0.75);
+    box-shadow: 0 0 0 4px rgba(243, 178, 77, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.contact-form button {
+    border: 0;
+    border-radius: 999px;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-strong));
+    color: #120b03;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.contact-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 32px rgba(255, 159, 28, 0.26);
+}
+
+.contact-form button:disabled {
+    opacity: 0.72;
+    cursor: wait;
+}
+
+.form-note {
+    margin: 0;
+    font-size: 0.92rem;
+}
+
+.form-status {
+    margin: 0;
+    min-height: 1.7em;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.form-status.is-success {
+    color: var(--success);
+}
+
+.form-status.is-error {
+    color: var(--error);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 720px) {
+    .hero {
+        min-height: auto;
+        padding-top: 32px;
+    }
+
+    .hero-card,
+    .contact-card {
+        border-radius: 20px;
+        padding: 24px 20px;
+    }
+
+    .hero-pills {
+        justify-content: flex-start;
+    }
+
+    .contact-card {
+        grid-template-columns: 1fr;
+    }
+}
